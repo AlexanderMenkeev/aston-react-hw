@@ -1,8 +1,12 @@
+import MainLayout from "../shared/layouts/MainLayout";
+import PostList from "../widgets/PostList";
+import { POSTS } from "../shared/mocks";
+
 function App() {
   return (
-    <>
-      <div> Empty FSD project </div>
-    </>
+    <MainLayout>
+      <PostList posts={POSTS} />
+    </MainLayout>
   );
 }
 
