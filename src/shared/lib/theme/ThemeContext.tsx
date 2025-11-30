@@ -28,7 +28,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
 export function useTheme() {
   const context = React.useContext(ThemeContext);
-  if (!context) {
+  // console.log("Is theme dark " + context?.isDarkTheme);
+  if (context === undefined) {
     throw new Error("useTheme must be used within ThemeProvider");
   }
   return context;
