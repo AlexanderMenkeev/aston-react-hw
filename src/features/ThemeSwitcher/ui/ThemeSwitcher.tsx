@@ -1,6 +1,6 @@
-import { useTheme } from "../../../shared/lib/theme/ThemeContext";
-import Button from "../../../shared/ui/Button";
-import { Sun, Moon } from "lucide-react";
+import { useTheme } from '../../../shared/lib/theme/ThemeContext';
+import Button from '../../../shared/ui/Button/Button';
+import { Sun, Moon } from 'lucide-react';
 
 const ThemeSwitcher: React.FC = () => {
   const { isDarkTheme, toggleTheme } = useTheme();

@@ -1,0 +1,14 @@
+.mainLayout {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-duration: var(--transition-default);
+
+  font-family: var(--font-family-base);
+
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
