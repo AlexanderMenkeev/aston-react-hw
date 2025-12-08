@@ -19,6 +19,7 @@
 }
 
 /* Themes */
+/* TO DO: уменьшить число цветов */
 .theme-light {
   --color-background: #ffffff;
   --color-text: #1e1e1e;
@@ -36,6 +37,11 @@
   --color-post-border: #e2e8f0;
   --color-post-title: #0f172a;
   --color-post-body: #475569;
+
+  --color-modal-background: #fff;
+  --color-modal-border: #e2e8f0;
+  --color-modal-title: #0f172a;
+  --color-modal-body: #475569;
 }
 
 .theme-dark {
@@ -55,6 +61,11 @@
   --color-post-border: #334155;
   --color-post-title: #fff;
   --color-post-body: #94a3b8;
+
+  --color-modal-background: #1e293b;
+  --color-modal-border: #334155;
+  --color-modal-title: #fff;
+  --color-modal-body: #cbd5e1;
 }
 
 /* General app styles */
