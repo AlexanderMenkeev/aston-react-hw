@@ -31,6 +31,11 @@
 
   --color-icon: #64748b;
   --color-icon-hover: #e2e8f0;
+
+  --color-post-background: #fff;
+  --color-post-border: #e2e8f0;
+  --color-post-title: #0f172a;
+  --color-post-body: #475569;
 }
 
 .theme-dark {
@@ -45,6 +50,11 @@
 
   --color-icon: #94a3b8;
   --color-icon-hover: #334155;
+
+  --color-post-background: #1e293b;
+  --color-post-border: #334155;
+  --color-post-title: #fff;
+  --color-post-body: #94a3b8;
 }
 
 /* General app styles */

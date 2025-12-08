@@ -1,0 +1,50 @@
+.postCard {
+  border-radius: 0.75rem;
+
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  border-width: 1px;
+  border-style: solid;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  transition-property: all;
+  transition-duration: var(--transition-default);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+}
+
+.postCard:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.content {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.postTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+.postBody {
+  line-height: 1.625;
+  font-size: 0.875rem;
+}
+
+.postCard {
+  background-color: var(--color-post-background);
+  border-color: var(--color-post-border);
+}
+
+.postTitle {
+  color: var(--color-post-title);
+}
+
+.postBody {
+  color: var(--color-post-body);
+}
