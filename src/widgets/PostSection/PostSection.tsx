@@ -1,7 +1,9 @@
 import styles from './PostSection.module.css';
 import PostList from '../PostList/PostList';
 import { withLoading } from '../../shared/lib/hoc/withLoading';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { filterByLength } from '../../features/PostLengthFilter/lib/filterByLength';
+import { PostLengthFilter } from '../../features/PostLengthFilter/ui/PostLengthFilter';
 
 export interface IPost {
   userId: number;
@@ -15,6 +17,7 @@ const PostListWithLoading = withLoading(PostList);
 const PostSection = () => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [postLength, setPostLength] = useState('20');
 
   useEffect(() => {
     setIsLoading(true);
@@ -38,13 +41,18 @@ const PostSection = () => {
     getPosts();
   }, []);
 
+  const filteredPosts = useMemo(() => {
+    return filterByLength(posts, Number(postLength));
+  }, [posts, postLength]);
+
   return (
     <section className={styles.section}>
       <div className={styles.headingContainer}>
         <h2 className={styles.heading}>Последние посты</h2>
+        <PostLengthFilter postLength={postLength} setPostLength={setPostLength} />
       </div>
 
-      <PostListWithLoading posts={posts} isLoading={isLoading} />
+      <PostListWithLoading posts={filteredPosts} isLoading={isLoading} />
     </section>
   );
 };
