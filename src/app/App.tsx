@@ -1,5 +1,5 @@
 import MainLayout from '../shared/layouts/MainLayout';
-import PostList, { type IPost } from '../widgets/PostList';
+import PostList, { type IPost } from '../widgets/PostList/PostList';
 import { POSTS } from '../shared/mocks';
 import { ThemeProvider } from '../shared/lib/theme/ThemeContext';
 import { useState, useCallback } from 'react';

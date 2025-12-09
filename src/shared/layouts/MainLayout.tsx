@@ -1,5 +1,5 @@
-import Header from '../../widgets/LayoutHeader';
-import Footer from '../../widgets/LayoutFooter';
+import Header from '../../widgets/LayoutHeader/Header';
+import Footer from '../../widgets/LayoutFooter/Footer';
 import { useTheme } from '../lib/theme/ThemeContext';
 import styles from './MainLayout.module.css';
 
@@ -13,7 +13,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, onOpenModal }) => {
   return (
     <div className={`${styles.mainLayout} ${isDarkTheme ? 'theme-dark' : 'theme-light'}`}>
       <Header onOpenModal={onOpenModal} />
-      <main className="flex-grow w-full mx-auto px-4">{children}</main>
+      <main className={styles.mainContent}>{children}</main>
       <Footer />
     </div>
   );

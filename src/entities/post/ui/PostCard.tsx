@@ -1,4 +1,4 @@
-import type { IPost } from '../../../widgets/PostList';
+import type { IPost } from '../../../widgets/PostList/PostList';
 import styles from './PostCard.module.css';
 
 interface PostCardProps {
