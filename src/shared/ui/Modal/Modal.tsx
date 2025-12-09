@@ -1,18 +1,20 @@
-import { X } from 'lucide-react';
 import { createPortal } from 'react-dom';
-import Button from '../Button/Button';
 import { useTheme } from '../../lib/theme/ThemeContext';
 import styles from './Modal.module.css';
+import { ModalContext } from '../../lib/modal/ModalContext';
+import ModalHeader from './ModalHeader';
+import ModalBody from './ModalBody';
+import ModalFooter from './ModalFooter';
 
 interface ModalProps {
+  children: React.ReactNode;
   isOpen: boolean;
   onClose: () => void;
-  children: React.ReactNode;
-  title: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
+const Modal = ({ children, isOpen, onClose }: ModalProps) => {
   const { isDarkTheme } = useTheme();
+
   if (!isOpen) return null;
 
   let modalRoot = document.getElementById('modal-root');
@@ -23,22 +25,17 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
   }
 
   return createPortal(
-    <div className={`${styles.backdrop} ${isDarkTheme ? 'theme-dark' : 'theme-light'}`}>
-      <div onClick={onClose} />
-
-      <div className={styles.content}>
-        <div className={styles.header}>
-          <h4 className={styles.title}>{title}</h4>
-          <Button variant="icon" onClick={onClose}>
-            <X size={24} />
-          </Button>
-        </div>
-
-        <div className={styles.body}>{children}</div>
+    <ModalContext.Provider value={{ isOpen, onClose }}>
+      <div className={`${styles.backdrop} ${isDarkTheme ? 'theme-dark' : 'theme-light'}`}>
+        <div className={styles.content}>{children}</div>
       </div>
-    </div>,
+    </ModalContext.Provider>,
     modalRoot,
   );
 };
+
+Modal.Header = ModalHeader;
+Modal.Body = ModalBody;
+Modal.Footer = ModalFooter;
 
 export default Modal;

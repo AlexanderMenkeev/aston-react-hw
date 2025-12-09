@@ -21,8 +21,8 @@
 /* Themes */
 /* TO DO: уменьшить число цветов */
 .theme-light {
-  --color-background: #ffffff;
-  --color-text: #1e1e1e;
+  --color-background: #f8fafc;
+  --color-text: #0f172a;
 
   --color-btn-background: #ffffff;
   --color-btn-text: #0f172a;
@@ -50,8 +50,8 @@
 }
 
 .theme-dark {
-  --color-background: #1e1e1e;
-  --color-text: #ffffff;
+  --color-background: #0f172a;
+  --color-text: #f1f5f9;
 
   --color-btn-background: #1e293b;
   --color-btn-text: #e2e8f0;
