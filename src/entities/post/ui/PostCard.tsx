@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { CommentList } from '../../../widgets/CommentList/ui/CommentList';
-import type { IPost } from '../../../widgets/PostSection/PostSection';
 import styles from './PostCard.module.css';
+import { NavLink } from 'react-router-dom';
+import type { IPost } from '../../interfaces';
 
 const PostCard = ({ post }: { post: IPost }) => {
   const [comments, setComments] = useState([]);
@@ -26,11 +27,11 @@ const PostCard = ({ post }: { post: IPost }) => {
 
   return (
     <article className={styles.postCard}>
-      <div className={styles.content}>
+      <NavLink to={`/posts/${post.id}`} className={styles.content}>
         <h3 className={styles.postTitle}>{post.title}</h3>
         <p className={styles.postBody}>{post.body}</p>
         <CommentList comments={comments} />
-      </div>
+      </NavLink>
     </article>
   );
 };

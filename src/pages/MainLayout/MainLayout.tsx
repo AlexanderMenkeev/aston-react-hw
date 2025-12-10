@@ -1,10 +1,10 @@
-import Header from '../widgets/LayoutHeader/Header';
-import Footer from '../widgets/LayoutFooter/Footer';
-import { useTheme } from '../shared/lib/theme/ThemeContext';
-import styles from './MainLayout.module.css';
 import { Outlet } from 'react-router-dom';
-import { useModal } from '../shared/lib/modal/ModalContext';
-import { AboutProjectModal } from '../widgets/AboutProjectModal/AboutProjectModal';
+import { useModal } from '../../shared/lib/modal/ModalContext';
+import { useTheme } from '../../shared/lib/theme/ThemeContext';
+import { AboutProjectModal } from '../../widgets/AboutProjectModal/AboutProjectModal';
+import Footer from '../../widgets/LayoutFooter/Footer';
+import Header from '../../widgets/LayoutHeader/Header';
+import styles from './MainLayout.module.css';
 
 function MainLayout() {
   const { isDarkTheme } = useTheme();

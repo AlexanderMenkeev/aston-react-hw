@@ -1,14 +1,7 @@
 import { useState } from 'react';
 import styles from './CommentList.module.css';
 import Button from '../../../shared/ui/Button/Button';
-
-interface IComment {
-  postId: number;
-  id: number;
-  name: string;
-  email: string;
-  body: string;
-}
+import type { IComment } from '../../../entities/interfaces';
 
 export const CommentList = ({ comments }: { comments: IComment[] }) => {
   const [isOpen, setIsOpen] = useState(false);

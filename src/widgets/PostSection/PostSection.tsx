@@ -5,13 +5,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { filterByLength } from '../../features/PostLengthFilter/lib/filterByLength';
 import { PostLengthFilter } from '../../features/PostLengthFilter/ui/PostLengthFilter';
 
-export interface IPost {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
-
 const PostListWithLoading = withLoading(PostList);
 
 const PostSection = () => {
