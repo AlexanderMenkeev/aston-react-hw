@@ -1,21 +1,16 @@
 import { createPortal } from 'react-dom';
 import { useTheme } from '../../lib/theme/ThemeContext';
 import styles from './Modal.module.css';
-import { ModalContext } from '../../lib/modal/ModalContext';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
+import { useModal } from '../../lib/modal/ModalContext';
 
-interface ModalProps {
-  children: React.ReactNode;
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-const Modal = ({ children, isOpen, onClose }: ModalProps) => {
+const Modal = ({ children }: { children: React.ReactNode }) => {
   const { isDarkTheme } = useTheme();
+  const { isModalOpen } = useModal();
 
-  if (!isOpen) return null;
+  if (!isModalOpen) return null;
 
   let modalRoot = document.getElementById('modal-root');
   if (!modalRoot) {
@@ -25,11 +20,10 @@ const Modal = ({ children, isOpen, onClose }: ModalProps) => {
   }
 
   return createPortal(
-    <ModalContext.Provider value={{ isOpen, onClose }}>
-      <div className={`${styles.backdrop} ${isDarkTheme ? 'theme-dark' : 'theme-light'}`}>
-        <div className={styles.content}>{children}</div>
-      </div>
-    </ModalContext.Provider>,
+    <div className={`${styles.backdrop} ${isDarkTheme ? 'theme-dark' : 'theme-light'}`}>
+      <div className={styles.content}>{children}</div>
+    </div>,
+
     modalRoot,
   );
 };

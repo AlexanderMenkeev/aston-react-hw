@@ -1,11 +1,11 @@
-import React, { useState, type ReactNode } from 'react';
+import React, { useContext, useState, type ReactNode } from 'react';
 
-interface ThemeContextType {
+interface IThemeContext {
   isDarkTheme: boolean;
   toggleTheme: () => void;
 }
 
-const ThemeContext = React.createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = React.createContext<IThemeContext | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [isDarkTheme, setTheme] = useState(false);
@@ -17,9 +17,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 }
 
 export function useTheme() {
-  const context = React.useContext(ThemeContext);
+  const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error('useTheme must be used within ThemeProvider');
+    throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;
 }

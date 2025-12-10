@@ -1,14 +1,14 @@
-import { useModalContext } from '../../lib/modal/ModalContext';
+import { useModal } from '../../lib/modal/ModalContext';
 import Button from '../Button/Button';
 import styles from './Modal.module.css';
 
 const ModalFooter = ({ children }: { children?: React.ReactNode }) => {
-  const { onClose } = useModalContext();
+  const { handleCloseModal } = useModal();
 
   return (
     <div className={styles.footer}>
       {children}
-      <Button onClick={onClose}>Закрыть</Button>
+      <Button onClick={handleCloseModal}>Закрыть</Button>
     </div>
   );
 };

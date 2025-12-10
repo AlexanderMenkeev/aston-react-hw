@@ -1,15 +1,15 @@
 import { X } from 'lucide-react';
-import { useModalContext } from '../../lib/modal/ModalContext';
+import { useModal } from '../../lib/modal/ModalContext';
 import Button from '../Button/Button';
 import styles from './Modal.module.css';
 
 const ModalHeader = ({ children }: { children: React.ReactNode }) => {
-  const { onClose } = useModalContext();
+  const { handleCloseModal } = useModal();
 
   return (
     <div className={styles.header}>
       <h4 className={styles.title}>{children}</h4>
-      <Button variant="icon" onClick={onClose}>
+      <Button variant="icon" onClick={handleCloseModal}>
         <X size={24} />
       </Button>
     </div>

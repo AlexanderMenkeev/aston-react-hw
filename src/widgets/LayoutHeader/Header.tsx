@@ -2,11 +2,7 @@ import ThemeSwitcher from '../../features/ThemeSwitcher/ui/ThemeSwitcher';
 import Button from '../../shared/ui/Button/Button';
 import styles from './Header.module.css';
 
-interface HeaderProps {
-  onOpenModal: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
+function Header({ handleOpenModal }: { handleOpenModal: () => void }) {
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
@@ -16,12 +12,12 @@ const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
         </div>
 
         <div className={styles.controls}>
-          <Button onClick={onOpenModal}>О проекте</Button>
+          <Button onClick={handleOpenModal}>О проекте</Button>
           <ThemeSwitcher />
         </div>
       </div>
     </header>
   );
-};
+}
 
 export default Header;
