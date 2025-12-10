@@ -1,7 +1,7 @@
 import React from 'react';
 import PostCard from '../../entities/post/ui/PostCard';
 import styles from './PostList.module.css';
-import type { IPost } from '../PostSection/PostSection';
+import type { IPost } from '../../entities/interfaces';
 
 interface PostListProps {
   posts: IPost[];

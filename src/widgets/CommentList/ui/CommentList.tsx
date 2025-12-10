@@ -6,7 +6,10 @@ import type { IComment } from '../../../entities/interfaces';
 export const CommentList = ({ comments }: { comments: IComment[] }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen((prev) => !prev);
+  const toggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    setIsOpen((prev) => !prev);
+  };
 
   return (
     <div className={styles.commentList}>

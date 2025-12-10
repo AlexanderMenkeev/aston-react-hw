@@ -1,42 +1,33 @@
 import styles from './PostSection.module.css';
 import PostList from '../PostList/PostList';
 import { withLoading } from '../../shared/lib/hoc/withLoading';
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import { filterByLength } from '../../features/PostLengthFilter/lib/filterByLength';
 import { PostLengthFilter } from '../../features/PostLengthFilter/ui/PostLengthFilter';
+import { usePosts } from '../../features/PostList/model/hooks/usePosts';
+import type { IPost } from '../../entities/interfaces';
 
 const PostListWithLoading = withLoading(PostList);
 
 const PostSection = () => {
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [postLength, setPostLength] = useState('20');
+  const { data, isLoading, error } = usePosts<IPost[]>(`https://jsonplaceholder.typicode.com/posts?_limit=10`);
 
-  useEffect(() => {
-    setIsLoading(true);
+  if (isLoading) {
+    return <div>Loading posts...</div>;
+  }
 
-    async function getPosts() {
-      try {
-        const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=10');
+  if (error) {
+    return <div>Error fetching posts: {error}</div>;
+  }
 
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
+  if (!data) {
+    return <div>Posts not found.</div>;
+  }
 
-        const data = await res.json();
-        setPosts(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getPosts();
-  }, []);
-
-  const filteredPosts = useMemo(() => {
-    return filterByLength(posts, Number(postLength));
-  }, [posts, postLength]);
+  const filteredPosts = () => {
+    return filterByLength(data, Number(postLength));
+  };
 
   return (
     <section className={styles.section}>
@@ -45,7 +36,7 @@ const PostSection = () => {
         <PostLengthFilter postLength={postLength} setPostLength={setPostLength} />
       </div>
 
-      <PostListWithLoading posts={filteredPosts} isLoading={isLoading} />
+      <PostListWithLoading posts={filteredPosts()} isLoading={isLoading} />
     </section>
   );
 };

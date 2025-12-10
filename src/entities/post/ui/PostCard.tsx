@@ -1,37 +1,39 @@
-import { useEffect, useState } from 'react';
 import { CommentList } from '../../../widgets/CommentList/ui/CommentList';
 import styles from './PostCard.module.css';
-import { NavLink } from 'react-router-dom';
-import type { IPost } from '../../interfaces';
+import { useNavigate } from 'react-router-dom';
+import type { IComment, IPost } from '../../interfaces';
+import { usePosts } from '../../../features/PostList/model/hooks/usePosts';
 
 const PostCard = ({ post }: { post: IPost }) => {
-  const [comments, setComments] = useState([]);
+  const { data, isLoading, error } = usePosts<IComment[]>(
+    `https://jsonplaceholder.typicode.com/posts/${post.id}/comments`,
+  );
 
-  useEffect(() => {
-    async function getComments() {
-      try {
-        const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`);
+  const navigate = useNavigate();
 
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
+  const handleCardClick = () => {
+    navigate(`/posts/${post.id}`);
+  };
 
-        const data = await res.json();
-        setComments(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-    getComments();
-  }, [post.id]);
+  if (isLoading) {
+    return <div>Loading comments...</div>;
+  }
+
+  if (error) {
+    return <div>Error fetching comments: {error}</div>;
+  }
+
+  if (!data) {
+    return <div>Comments not found.</div>;
+  }
 
   return (
     <article className={styles.postCard}>
-      <NavLink to={`/posts/${post.id}`} className={styles.content}>
+      <div onClick={handleCardClick} className={styles.content}>
         <h3 className={styles.postTitle}>{post.title}</h3>
         <p className={styles.postBody}>{post.body}</p>
-        <CommentList comments={comments} />
-      </NavLink>
+        <CommentList comments={data} />
+      </div>
     </article>
   );
 };
