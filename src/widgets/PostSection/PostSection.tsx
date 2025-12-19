@@ -1,13 +1,10 @@
 import styles from './PostSection.module.css';
 import PostList from '../PostList/PostList';
-import { withLoading } from '../../shared/lib/hoc/withLoading';
 import { useState } from 'react';
 import { filterByLength } from '../../features/PostLengthFilter/lib/filterByLength';
 import { PostLengthFilter } from '../../features/PostLengthFilter/ui/PostLengthFilter';
 import { usePosts } from '../../features/PostList/model/hooks/usePosts';
 import type { IPost } from '../../entities/interfaces';
-
-const PostListWithLoading = withLoading(PostList);
 
 const PostSection = () => {
   const [postLength, setPostLength] = useState('20');
@@ -36,7 +33,7 @@ const PostSection = () => {
         <PostLengthFilter postLength={postLength} setPostLength={setPostLength} />
       </div>
 
-      <PostListWithLoading posts={filteredPosts()} isLoading={isLoading} />
+      <PostList posts={filteredPosts()} />
     </section>
   );
 };
