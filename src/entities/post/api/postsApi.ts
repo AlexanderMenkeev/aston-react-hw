@@ -6,8 +6,11 @@ export const postsApi = createApi({
   reducerPath: 'postsApi',
   baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
   endpoints: (builder) => ({
-    getPosts: builder.query<IPost[], void>({
-      query: () => '/posts',
+    getPosts: builder.query<IPost[], { userId?: string } | void>({
+      query: (params) => ({
+        url: '/posts',
+        params: params || {},
+      }),
     }),
     getPost: builder.query<IPost, string | undefined>({
       query: (id) => `/posts/${id}`,
