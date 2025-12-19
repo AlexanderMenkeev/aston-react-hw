@@ -1,8 +1,9 @@
 import { CommentList } from '../../../widgets/CommentList/ui/CommentList';
 import styles from './PostCard.module.css';
 import { useNavigate } from 'react-router-dom';
-import type { IComment, IPost } from '../../interfaces';
 import { usePosts } from '../../../features/PostList/model/hooks/usePosts';
+import type IComment from '../../comment/model/IComment';
+import type IPost from '../model/IPost';
 
 const PostCard = ({ post }: { post: IPost }) => {
   const { data, isLoading, error } = usePosts<IComment[]>(
