@@ -23,9 +23,9 @@ const PostSection = () => {
     return <div>Posts not found.</div>;
   }
 
-  // const filteredPosts = () => {
-  //   return filterByLength(data, Number(postLength));
-  // };
+  const filteredPosts = () => {
+    return filterByLength(data, Number(postLength));
+  };
 
   return (
     <section className={styles.section}>
@@ -34,8 +34,7 @@ const PostSection = () => {
         <PostLengthFilter postLength={postLength} setPostLength={setPostLength} />
       </div>
 
-      <PostList posts={data} />
-      {/* <PostList posts={filteredPosts()} /> */}
+      <PostList posts={filteredPosts()} />
     </section>
   );
 };
