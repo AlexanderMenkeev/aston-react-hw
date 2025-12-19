@@ -1,26 +1,25 @@
 import { useParams } from 'react-router-dom';
+import { useGetPostQuery } from '../entities/post/api/postsApi';
 
 function Post() {
   const { id } = useParams();
 
-  // const { data, isLoading, error } = usePosts<IAlbum>(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  const { data: post, isLoading, isSuccess, isError, error } = useGetPostQuery(id);
 
-  // if (isLoading) {
-  //   return <div>Loading post...</div>;
-  // }
+  let content: React.ReactNode;
 
-  // if (error) {
-  //   return <div>Error fetching post: {error}</div>;
-  // }
-
-  // if (!data) {
-  //   return <div>Post not found.</div>;
-  // }
+  if (isLoading) {
+    content = <div>Loading...</div>;
+  } else if (isSuccess) {
+    content = <h2>{JSON.stringify(post)}</h2>;
+  } else if (isError) {
+    content = <div>Error! {JSON.stringify(error)}</div>;
+  }
 
   return (
     <div>
       <h1>Post Page</h1>
-      {/* <h2>{JSON.stringify(data)}</h2> */}
+      {content}
     </div>
   );
 }

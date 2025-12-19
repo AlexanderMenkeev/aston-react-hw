@@ -3,24 +3,25 @@ import PostList from '../PostList/PostList';
 import { useState } from 'react';
 import { filterByLength } from '../../features/PostLengthFilter/lib/filterByLength';
 import { PostLengthFilter } from '../../features/PostLengthFilter/ui/PostLengthFilter';
+import { useGetPostsQuery } from '../../entities/post/api/postsApi';
 // import { usePosts } from '../../features/PostList/model/hooks/usePosts';
 // import type IPost from '../../entities/post/model/IPost';
 
 const PostSection = () => {
   const [postLength, setPostLength] = useState('20');
-  // const { data, isLoading, error } = usePosts<IPost[]>(`https://jsonplaceholder.typicode.com/posts?_limit=10`);
+  const { data, isLoading, error } = useGetPostsQuery();
 
-  // if (isLoading) {
-  //   return <div>Loading posts...</div>;
-  // }
+  if (isLoading) {
+    return <div>Loading posts...</div>;
+  }
 
-  // if (error) {
-  //   return <div>Error fetching posts: {error}</div>;
-  // }
+  if (error) {
+    return <div>Error fetching posts</div>;
+  }
 
-  // if (!data) {
-  //   return <div>Posts not found.</div>;
-  // }
+  if (!data) {
+    return <div>Posts not found.</div>;
+  }
 
   // const filteredPosts = () => {
   //   return filterByLength(data, Number(postLength));
@@ -33,6 +34,7 @@ const PostSection = () => {
         <PostLengthFilter postLength={postLength} setPostLength={setPostLength} />
       </div>
 
+      <PostList posts={data} />
       {/* <PostList posts={filteredPosts()} /> */}
     </section>
   );
