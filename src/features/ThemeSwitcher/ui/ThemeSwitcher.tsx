@@ -1,12 +1,14 @@
-import { useTheme } from '../../../shared/lib/theme/ThemeContext';
+import { useAppDispatch, useAppSelector } from '../../../app/providers/hooks';
+import { selectIsDarkTheme, toggleTheme } from '../../../shared/lib/theme/themeSlice';
 import Button from '../../../shared/ui/Button/Button';
 import { Sun, Moon } from 'lucide-react';
 
 function ThemeSwitcher() {
-  const { isDarkTheme, toggleTheme } = useTheme();
+  const dispatch = useAppDispatch();
+  const isDarkTheme = useAppSelector(selectIsDarkTheme);
 
   return (
-    <Button variant="icon" onClick={toggleTheme}>
+    <Button variant="icon" onClick={() => dispatch(toggleTheme())}>
       {isDarkTheme ? <Sun size={20} /> : <Moon size={20} />}
     </Button>
   );

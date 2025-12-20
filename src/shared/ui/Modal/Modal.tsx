@@ -1,14 +1,14 @@
 import { createPortal } from 'react-dom';
-import { useTheme } from '../../lib/theme/ThemeContext';
 import styles from './Modal.module.css';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
 import { useAppSelector } from '../../../app/providers/hooks';
 import { selectIsModalOpen } from '../../lib/modal/modalSlice';
+import { selectIsDarkTheme } from '../../lib/theme/themeSlice';
 
 const Modal = ({ children }: { children: React.ReactNode }) => {
-  const { isDarkTheme } = useTheme();
+  const isDarkTheme = useAppSelector(selectIsDarkTheme);
   const isOpen = useAppSelector(selectIsModalOpen);
 
   if (!isOpen) return null;

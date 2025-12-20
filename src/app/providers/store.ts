@@ -6,10 +6,12 @@ import { photosApi } from '../../entities/photo/api/photosApi';
 import { usersApi } from '../../entities/user/api/usersApi';
 import { todosApi } from '../../entities/todo/api/todosApi';
 import modalReducer from '../../shared/lib/modal/modalSlice';
+import themeReducer from '../../shared/lib/theme/themeSlice';
 
 export const store = configureStore({
   reducer: {
     modal: modalReducer,
+    theme: themeReducer,
     [postsApi.reducerPath]: postsApi.reducer,
     [commentsApi.reducerPath]: commentsApi.reducer,
     [albumsApi.reducerPath]: albumsApi.reducer,

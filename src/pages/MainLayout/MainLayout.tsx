@@ -1,12 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import { useTheme } from '../../shared/lib/theme/ThemeContext';
 import { AboutProjectModal } from '../../widgets/AboutProjectModal/AboutProjectModal';
 import Footer from '../../widgets/LayoutFooter/Footer';
 import Header from '../../widgets/LayoutHeader/Header';
 import styles from './MainLayout.module.css';
+import { useAppSelector } from '../../app/providers/hooks';
+import { selectIsDarkTheme } from '../../shared/lib/theme/themeSlice';
 
 function MainLayout() {
-  const { isDarkTheme } = useTheme();
+  const isDarkTheme = useAppSelector(selectIsDarkTheme);
 
   return (
     <div className={`${styles.mainLayout} ${isDarkTheme ? 'theme-dark' : 'theme-light'}`}>
