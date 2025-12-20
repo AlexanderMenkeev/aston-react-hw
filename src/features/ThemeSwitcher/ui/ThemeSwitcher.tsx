@@ -2,7 +2,7 @@ import { useTheme } from '../../../shared/lib/theme/ThemeContext';
 import Button from '../../../shared/ui/Button/Button';
 import { Sun, Moon } from 'lucide-react';
 
-const ThemeSwitcher: React.FC = () => {
+function ThemeSwitcher() {
   const { isDarkTheme, toggleTheme } = useTheme();
 
   return (
@@ -10,6 +10,6 @@ const ThemeSwitcher: React.FC = () => {
       {isDarkTheme ? <Sun size={20} /> : <Moon size={20} />}
     </Button>
   );
-};
+}
 
 export default ThemeSwitcher;

@@ -1,4 +1,4 @@
-import styles from './UserTabs.module.css';
+import styles from './Tabs.module.css';
 import { NavLink } from 'react-router-dom';
 
 export interface Tab {
@@ -6,18 +6,9 @@ export interface Tab {
   label: string;
 }
 
-const tabs: Tab[] = [
-  {
-    to: '/',
-    label: 'Все посты',
-  },
-  {
-    to: '/users',
-    label: 'Все пользователи',
-  },
-];
+function Tabs(props: { tabs: Tab[] }) {
+  const { tabs } = props;
 
-function UserTabs() {
   return (
     <div className={styles.tabsContainer}>
       <div className={styles.tabsList}>
@@ -35,4 +26,4 @@ function UserTabs() {
   );
 }
 
-export default UserTabs;
+export default Tabs;

@@ -1,7 +1,18 @@
 import ThemeSwitcher from '../../features/ThemeSwitcher/ui/ThemeSwitcher';
 import Button from '../../shared/ui/Button/Button';
-import UserTabs from '../UserTabs/UserTabs';
+import Tabs, { type Tab } from '../../shared/ui/Tabs/Tabs';
 import styles from './Header.module.css';
+
+const headerTabs: Tab[] = [
+  {
+    to: '/',
+    label: 'Все посты',
+  },
+  {
+    to: '/users',
+    label: 'Все пользователи',
+  },
+];
 
 function Header({ handleOpenModal }: { handleOpenModal: () => void }) {
   return (
@@ -12,7 +23,7 @@ function Header({ handleOpenModal }: { handleOpenModal: () => void }) {
           <span className={styles.title}>Проект</span>
         </div>
 
-        <UserTabs />
+        <Tabs tabs={headerTabs} />
 
         <div className={styles.controls}>
           <Button onClick={handleOpenModal}>О проекте</Button>

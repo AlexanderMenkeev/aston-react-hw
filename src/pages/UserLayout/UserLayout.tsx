@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useParams } from 'react-router-dom';
-import type { Tab } from '../../widgets/UserTabs/UserTabs';
+import type { Tab } from '../../shared/ui/Tabs/Tabs';
 import styles from './UserLayout.module.css';
 
 function MainLayout() {

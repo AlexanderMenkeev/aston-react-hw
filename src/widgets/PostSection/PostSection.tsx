@@ -3,11 +3,14 @@ import PostList from '../PostList/PostList';
 import { useState } from 'react';
 import { filterByLength } from '../../features/PostLengthFilter/lib/filterByLength';
 import { PostLengthFilter } from '../../features/PostLengthFilter/ui/PostLengthFilter';
-import { useGetPostsQuery } from '../../entities/post/api/postsApi';
+import { postsSelectors, useGetPostsQuery } from '../../entities/post/api/postsApi';
+import { useSelector } from 'react-redux';
 
 const PostSection = () => {
   const [postLength, setPostLength] = useState('20');
-  const { data, isLoading, error } = useGetPostsQuery();
+  const { isLoading, error } = useGetPostsQuery();
+
+  const allPosts = useSelector(postsSelectors.selectAll);
 
   if (isLoading) {
     return <div>Loading posts...</div>;
@@ -17,12 +20,8 @@ const PostSection = () => {
     return <div>Error fetching posts</div>;
   }
 
-  if (!data) {
-    return <div>Posts not found.</div>;
-  }
-
   const filteredPosts = () => {
-    return filterByLength(data, Number(postLength));
+    return filterByLength(allPosts, Number(postLength));
   };
 
   return (

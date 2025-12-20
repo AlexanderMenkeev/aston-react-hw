@@ -5,7 +5,7 @@ import { RouterProvider } from 'react-router-dom';
 import { store } from './providers/store';
 import { Provider } from 'react-redux';
 
-const App: React.FC = () => {
+function App() {
   return (
     <Provider store={store}>
       <ThemeProvider>
@@ -15,6 +15,6 @@ const App: React.FC = () => {
       </ThemeProvider>
     </Provider>
   );
-};
+}
 
 export default App;

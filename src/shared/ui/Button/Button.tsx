@@ -5,13 +5,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'default' | 'icon';
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick, variant = 'default', ...props }) => {
+function Button({ children, onClick, variant = 'default', ...props }: ButtonProps) {
   const className = variant === 'default' ? styles.button : styles.icon;
   return (
     <button onClick={onClick} className={className} {...props}>
       {children}
     </button>
   );
-};
+}
 
 export default Button;

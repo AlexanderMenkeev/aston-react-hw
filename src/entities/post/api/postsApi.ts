@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type IPost from '../model/IPost';
 import { API_URL } from '../../../shared/config';
-import { createEntityAdapter } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSelector } from '@reduxjs/toolkit';
+import type { RootState } from '../../../app/providers/store';
 
 const postsAdapter = createEntityAdapter<IPost>();
 type PostsState = ReturnType<typeof postsAdapter.getInitialState>;
@@ -28,3 +29,8 @@ export const postsApi = createApi({
 });
 
 export const { useGetPostsQuery, useGetPostQuery } = postsApi;
+
+const selectPostsResult = postsApi.endpoints.getPosts.select();
+const selectPostsData = createSelector(selectPostsResult, (result) => result.data);
+
+export const postsSelectors = postsAdapter.getSelectors((state: RootState) => selectPostsData(state) ?? initialState);
