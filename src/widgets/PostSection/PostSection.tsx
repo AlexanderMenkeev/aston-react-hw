@@ -4,8 +4,6 @@ import { useState } from 'react';
 import { filterByLength } from '../../features/PostLengthFilter/lib/filterByLength';
 import { PostLengthFilter } from '../../features/PostLengthFilter/ui/PostLengthFilter';
 import { useGetPostsQuery } from '../../entities/post/api/postsApi';
-// import { usePosts } from '../../features/PostList/model/hooks/usePosts';
-// import type IPost from '../../entities/post/model/IPost';
 
 const PostSection = () => {
   const [postLength, setPostLength] = useState('20');

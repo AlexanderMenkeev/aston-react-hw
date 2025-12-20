@@ -1,9 +1,12 @@
-import type { IPost } from '../../../widgets/PostSection/PostSection';
+import type { EntityState, EntityId } from '@reduxjs/toolkit';
+import type IPost from '../../../entities/post/model/IPost';
 
-export const filterByLength = (posts: IPost[], max: number) => {
-  if (!posts) return [];
+export const filterByLength = (postsState: EntityState<IPost, EntityId>, max: number): IPost[] => {
+  if (!postsState) return [];
 
-  return posts.filter((post) => {
-    return post.title.length <= max;
-  });
+  return postsState.ids
+    .map((id) => postsState.entities[id])
+    .filter((post) => {
+      return post.title.length <= max;
+    });
 };

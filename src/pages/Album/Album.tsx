@@ -1,6 +1,4 @@
 import { NavLink, useParams } from 'react-router-dom';
-// import { usePosts } from '../../features/PostList/model/hooks/usePosts';
-// import type { IAlbum } from '../../entities/interfaces';
 import styles from './Album.module.css';
 import { useGetAlbumQuery } from '../../entities/album/api/albumsApi';
 

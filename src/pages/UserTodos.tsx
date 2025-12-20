@@ -1,7 +1,5 @@
 import { useParams } from 'react-router-dom';
 import { useGetTodosQuery } from '../entities/todo/api/todosApi';
-// import { usePosts } from '../features/PostList/model/hooks/usePosts';
-// import type { ITodo } from '../entities/interfaces';
 
 function UserTodos() {
   const { id } = useParams();
