@@ -1,4 +1,6 @@
+import { useAppDispatch } from '../../app/providers/hooks';
 import ThemeSwitcher from '../../features/ThemeSwitcher/ui/ThemeSwitcher';
+import { toggleModal } from '../../shared/lib/modal/modalSlice';
 import Button from '../../shared/ui/Button/Button';
 import Tabs, { type Tab } from '../../shared/ui/Tabs/Tabs';
 import styles from './Header.module.css';
@@ -14,7 +16,9 @@ const headerTabs: Tab[] = [
   },
 ];
 
-function Header({ handleOpenModal }: { handleOpenModal: () => void }) {
+function Header() {
+  const dispatch = useAppDispatch();
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
@@ -26,7 +30,13 @@ function Header({ handleOpenModal }: { handleOpenModal: () => void }) {
         <Tabs tabs={headerTabs} />
 
         <div className={styles.controls}>
-          <Button onClick={handleOpenModal}>О проекте</Button>
+          <Button
+            onClick={() => {
+              dispatch(toggleModal());
+            }}
+          >
+            О проекте
+          </Button>
           <ThemeSwitcher />
         </div>
       </div>

@@ -1,14 +1,15 @@
-import { useModal } from '../../lib/modal/ModalContext';
+import { useAppDispatch } from '../../../app/providers/hooks';
+import { toggleModal } from '../../lib/modal/modalSlice';
 import Button from '../Button/Button';
 import styles from './Modal.module.css';
 
 const ModalFooter = ({ children }: { children?: React.ReactNode }) => {
-  const { handleCloseModal } = useModal();
+  const dispatch = useAppDispatch();
 
   return (
     <div className={styles.footer}>
       {children}
-      <Button onClick={handleCloseModal}>Закрыть</Button>
+      <Button onClick={() => dispatch(toggleModal())}>Закрыть</Button>
     </div>
   );
 };

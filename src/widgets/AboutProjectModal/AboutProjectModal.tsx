@@ -1,10 +1,9 @@
 import Modal from '../../shared/ui/Modal/Modal';
 import styles from './AboutProjectModal.module.css';
 
-// Экземпляр модального окна "О проекте"
-export function AboutProjectModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+export function AboutProjectModal() {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal>
       <Modal.Header>О проекте</Modal.Header>
       <Modal.Body>
         <p className={styles.p}>

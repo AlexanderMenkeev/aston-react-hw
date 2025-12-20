@@ -5,9 +5,11 @@ import { albumsApi } from '../../entities/album/api/albumsApi';
 import { photosApi } from '../../entities/photo/api/photosApi';
 import { usersApi } from '../../entities/user/api/usersApi';
 import { todosApi } from '../../entities/todo/api/todosApi';
+import modalReducer from '../../shared/lib/modal/modalSlice';
 
 export const store = configureStore({
   reducer: {
+    modal: modalReducer,
     [postsApi.reducerPath]: postsApi.reducer,
     [commentsApi.reducerPath]: commentsApi.reducer,
     [albumsApi.reducerPath]: albumsApi.reducer,
@@ -25,4 +27,6 @@ export const store = configureStore({
       .concat(todosApi.middleware),
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export type AppStore = typeof store;
+export type RootState = ReturnType<AppStore['getState']>;
+export type AppDispatch = AppStore['dispatch'];

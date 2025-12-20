@@ -4,13 +4,14 @@ import styles from './Modal.module.css';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
-import { useModal } from '../../lib/modal/ModalContext';
+import { useAppSelector } from '../../../app/providers/hooks';
+import { selectIsModalOpen } from '../../lib/modal/modalSlice';
 
 const Modal = ({ children }: { children: React.ReactNode }) => {
   const { isDarkTheme } = useTheme();
-  const { isModalOpen } = useModal();
+  const isOpen = useAppSelector(selectIsModalOpen);
 
-  if (!isModalOpen) return null;
+  if (!isOpen) return null;
 
   let modalRoot = document.getElementById('modal-root');
   if (!modalRoot) {
