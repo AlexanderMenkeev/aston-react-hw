@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { AboutProjectModal } from '../../widgets/AboutProjectModal/AboutProjectModal';
-import Footer from '../../widgets/LayoutFooter/Footer';
-import Header from '../../widgets/LayoutHeader/Header';
+import Footer from '../../widgets/Footer/Footer';
+import Header from '../../widgets/Header/Header';
 import styles from './MainLayout.module.css';
 import { useAppSelector } from '../../app/providers/hooks';
 import { selectIsDarkTheme } from '../../shared/lib/theme/themeSlice';

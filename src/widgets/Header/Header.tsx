@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/providers/hooks';
 import ThemeSwitcher from '../../features/ThemeSwitcher/ui/ThemeSwitcher';
 import { toggleModal } from '../../shared/lib/modal/modalSlice';
@@ -19,12 +20,17 @@ const headerTabs: Tab[] = [
 function Header() {
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate('/');
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
-        <div className={styles.logoGroup}>
-          <div className={styles.logo}>Logo</div>
-          <span className={styles.title}>Проект</span>
+        <div onClick={handleLogoClick} className={styles.logo}>
+          Logo
         </div>
 
         <Tabs tabs={headerTabs} />

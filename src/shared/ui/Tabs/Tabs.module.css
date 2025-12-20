@@ -1,10 +1,5 @@
-.tabsContainer {
-  width: 100%;
-  max-width: 60rem;
-  border-radius: 0.5rem;
-}
-
 .tabsList {
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,8 +23,6 @@
 }
 
 .active {
-  border-bottom: 2px solid #6366f1;
-  margin-bottom: -1px;
   color: #4f46e5;
   background-color: #eef2ff;
 }

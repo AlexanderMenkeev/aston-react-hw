@@ -1,12 +1,7 @@
-import PostSection from '../widgets/PostSection/PostSection';
+import PostsSection from '../widgets/PostsSection/PostsSection';
 
 function Posts() {
-  return (
-    <div>
-      <h1>Posts Page</h1>
-      <PostSection />
-    </div>
-  );
+  return <PostsSection />;
 }
 
 export default Posts;

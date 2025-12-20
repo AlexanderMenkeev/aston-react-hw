@@ -1,4 +1,4 @@
-import styles from './PostSection.module.css';
+import styles from './PostsSection.module.css';
 import { useMemo, useState } from 'react';
 import { filterByLength } from '../../features/PostLengthFilter/lib/filterByLength';
 import { PostLengthFilter } from '../../features/PostLengthFilter/ui/PostLengthFilter';
@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import ItemList from '../../shared/ui/ItemList/ItemList';
 import PostCard from '../../entities/post/ui/PostCard';
 
-const PostSection = () => {
+const PostsSection = () => {
   const [postLength, setPostLength] = useState('20');
   const { isLoading, error } = useGetPostsQuery();
 
@@ -18,11 +18,11 @@ const PostSection = () => {
   }, [allPosts, postLength]);
 
   if (isLoading) {
-    return <div>Loading posts...</div>;
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Error fetching posts</div>;
+    return <div>Error</div>;
   }
 
   return (
@@ -37,4 +37,4 @@ const PostSection = () => {
   );
 };
 
-export default PostSection;
+export default PostsSection;

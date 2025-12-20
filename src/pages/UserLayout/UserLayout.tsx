@@ -1,11 +1,15 @@
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import type { Tab } from '../../shared/ui/Tabs/Tabs';
-import styles from './UserLayout.module.css';
+import Tabs from '../../shared/ui/Tabs/Tabs';
 
-function MainLayout() {
+function UserLayout() {
   const { id } = useParams();
 
   const tabs: Tab[] = [
+    {
+      to: `/users/${id}`,
+      label: 'Пользователь',
+    },
     {
       to: `/users/${id}/posts`,
       label: 'Посты пользователя',
@@ -22,23 +26,11 @@ function MainLayout() {
 
   return (
     <>
-      <div className={styles.tabsContainer}>
-        <div className={styles.tabsList}>
-          {tabs.map((tab) => (
-            <NavLink
-              key={tab.to}
-              to={tab.to}
-              className={({ isActive }) => `${styles.tabButton} ${isActive ? styles.active : styles.inactive}`}
-            >
-              {tab.label}
-            </NavLink>
-          ))}
-        </div>
-      </div>
+      <Tabs tabs={tabs} />
 
       <Outlet />
     </>
   );
 }
 
-export default MainLayout;
+export default UserLayout;
