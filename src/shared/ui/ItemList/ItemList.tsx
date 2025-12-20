@@ -1,3 +1,5 @@
+import styles from './ItemList.module.css';
+
 interface IWithId {
   id: number;
 }
@@ -10,7 +12,7 @@ interface IListProps<T extends IWithId> {
 function ItemList<T extends IWithId>(props: IListProps<T>) {
   const { items, component: ItemComponent } = props;
   return (
-    <ul>
+    <ul className={styles.itemGrid}>
       {items.map((item) => (
         <li key={item.id}>
           <ItemComponent item={item} />

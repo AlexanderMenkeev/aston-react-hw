@@ -1,17 +1,9 @@
-.p {
-  margin-bottom: 1rem;
+.description {
+  margin-bottom: 0.5rem;
 }
 
 .techList {
   list-style-type: disc;
-
   list-style-position: inside;
-
-  margin-top: 0;
-  padding-left: 0;
   text-align: left;
-}
-
-.techList li {
-  margin-bottom: 0.25rem;
 }

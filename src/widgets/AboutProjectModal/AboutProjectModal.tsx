@@ -6,16 +6,18 @@ export function AboutProjectModal() {
     <Modal>
       <Modal.Header>О проекте</Modal.Header>
       <Modal.Body>
-        <p className={styles.p}>
-          Приложение для просмотра постов и комментариев, созданное в рамках выполнения домашних заданий.
+        <p className={styles.description}>
+          Приложение для просмотра постов и комментариев, созданное в рамках выполнения домашних заданий. <br /> Что
+          использовано:
         </p>
-        <p>Что использовано:</p>
+
         <ul className={styles.techList}>
           <li>Feature-Sliced Design (FSD)</li>
-          <li>React Context для смены темы и передачи данных внутри подкомпонентов модального окна</li>
-          <li>React Portal для создания модального окна вне текущего DOM-дерева</li>
-          <li>CSS Modules для стилизации</li>
-          <li>lucide-react для иконок </li>
+          <li>Redux toolkit</li>
+          <li>RTK query</li>
+          <li>React Portal</li>
+          <li>CSS Modules</li>
+          <li>lucide-react</li>
         </ul>
       </Modal.Body>
       <Modal.Footer />

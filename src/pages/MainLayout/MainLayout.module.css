@@ -1,8 +1,7 @@
 .mainLayout {
-  min-height: 100vh;
-
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 
   transition-property: all;
   transition-duration: var(--transition-default);
