@@ -1,7 +1,8 @@
 import React from 'react';
 import PostCard from '../../entities/post/ui/PostCard';
 import styles from './PostList.module.css';
-import type { IPost } from '../../entities/interfaces';
+import type IPost from '../../entities/post/model/IPost';
+import ItemList from '../../shared/ui/ItemList/ItemList';
 
 interface PostListProps {
   posts: IPost[];
@@ -10,11 +11,7 @@ interface PostListProps {
 const PostList: React.FC<PostListProps> = ({ posts }) => {
   return (
     <div className={styles.postsGrid}>
-      {posts.map((post) => (
-        <React.Fragment key={post.id}>
-          <PostCard post={post} />
-        </React.Fragment>
-      ))}
+      <ItemList items={posts} component={PostCard} />
     </div>
   );
 };

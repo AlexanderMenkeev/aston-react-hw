@@ -1,7 +1,12 @@
-import { useGetUsersQuery } from '../entities/user/api/usersApi';
+import { useSelector } from 'react-redux';
+import { useGetUsersQuery, usersSelectors } from '../entities/user/api/usersApi';
+import UserCard from '../entities/user/ui/UserCard';
+import ItemList from '../shared/ui/ItemList/ItemList';
 
 function Users() {
-  const { data, isLoading, error } = useGetUsersQuery();
+  const { isLoading, error } = useGetUsersQuery();
+
+  const allUsers = useSelector(usersSelectors.selectAll);
 
   if (isLoading) {
     return <div>Loading posts...</div>;
@@ -11,11 +16,11 @@ function Users() {
     return <div>Error fetching posts</div>;
   }
 
-  if (!data) {
-    return <div>Posts not found.</div>;
-  }
-
-  return <section>{JSON.stringify(data)}</section>;
+  return (
+    <div>
+      <ItemList items={allUsers} component={UserCard} />
+    </div>
+  );
 }
 
 export default Users;

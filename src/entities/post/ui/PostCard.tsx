@@ -4,7 +4,7 @@ import type IPost from '../model/IPost';
 import { useGetCommentsQuery } from '../../comment/api/commentsApi';
 import { CommentList } from '../../../widgets/CommentList/ui/CommentList';
 
-const PostCard = ({ post }: { post: IPost }) => {
+const PostCard = ({ item: post }: { item: IPost }) => {
   const { data, isLoading, error } = useGetCommentsQuery(post.id);
 
   const navigate = useNavigate();

@@ -24,3 +24,5 @@ export const store = configureStore({
       .concat(usersApi.middleware)
       .concat(todosApi.middleware),
 });
+
+export type RootState = ReturnType<typeof store.getState>;
