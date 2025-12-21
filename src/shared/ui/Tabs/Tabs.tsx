@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 export interface Tab {
   to: string;
   label: string;
+  end?: boolean;
 }
 
 function Tabs(props: { tabs: Tab[] }) {
@@ -15,6 +16,7 @@ function Tabs(props: { tabs: Tab[] }) {
         <NavLink
           key={tab.to}
           to={tab.to}
+          end={tab.end}
           className={({ isActive }) => `${styles.tabButton} ${isActive ? styles.active : styles.inactive}`}
         >
           {tab.label}

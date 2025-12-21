@@ -14,6 +14,7 @@ const headerTabs: Tab[] = [
   {
     to: '/users',
     label: 'Все пользователи',
+    end: true,
   },
 ];
 

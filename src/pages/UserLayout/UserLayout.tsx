@@ -1,6 +1,7 @@
 import { Outlet, useParams } from 'react-router-dom';
 import type { Tab } from '../../shared/ui/Tabs/Tabs';
 import Tabs from '../../shared/ui/Tabs/Tabs';
+import styles from './UserLayout.module.css';
 
 function UserLayout() {
   const { id } = useParams();
@@ -9,6 +10,7 @@ function UserLayout() {
     {
       to: `/users/${id}`,
       label: 'Пользователь',
+      end: true,
     },
     {
       to: `/users/${id}/posts`,
@@ -27,8 +29,9 @@ function UserLayout() {
   return (
     <>
       <Tabs tabs={tabs} />
-
-      <Outlet />
+      <div className={styles.userContent}>
+        <Outlet />
+      </div>
     </>
   );
 }
