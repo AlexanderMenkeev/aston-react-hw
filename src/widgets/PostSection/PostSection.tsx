@@ -1,9 +1,10 @@
 import styles from './PostSection.module.css';
 import PostList from '../PostList/PostList';
 import { withLoading } from '../../shared/lib/hoc/withLoading';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { filterByLength } from '../../features/PostLengthFilter/lib/filterByLength';
 import { PostLengthFilter } from '../../features/PostLengthFilter/ui/PostLengthFilter';
+import Button from '../../shared/ui/Button/Button';
 
 export interface IPost {
   userId: number;
@@ -18,6 +19,12 @@ const PostSection = () => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [postLength, setPostLength] = useState('20');
+
+  const [count, setCount] = useState(0);
+
+  const handleLengthChange = useCallback((newLength: string) => {
+    setPostLength(newLength);
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -49,7 +56,9 @@ const PostSection = () => {
     <section className={styles.section}>
       <div className={styles.headingContainer}>
         <h2 className={styles.heading}>Последние посты</h2>
-        <PostLengthFilter postLength={postLength} setPostLength={setPostLength} />
+        {/* При изменении стейта родителя, дочерний компонент не ререндерится */}
+        <Button onClick={() => setCount((prev) => prev + 1)}>{count}</Button>
+        <PostLengthFilter postLength={postLength} setPostLength={handleLengthChange} />
       </div>
 
       <PostListWithLoading posts={filteredPosts} isLoading={isLoading} />

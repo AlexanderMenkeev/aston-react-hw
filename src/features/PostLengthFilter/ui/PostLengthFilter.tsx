@@ -1,12 +1,14 @@
+import { memo } from 'react'; // 1. Import memo
 import styles from './PostLengthFilter.module.css';
 
-export function PostLengthFilter({
-  postLength,
-  setPostLength,
-}: {
+interface PostLengthFilterProps {
   postLength: string;
   setPostLength: (arg0: string) => void;
-}) {
+}
+
+export const PostLengthFilter = memo(function PostLengthFilter({ postLength, setPostLength }: PostLengthFilterProps) {
+  console.log('PostLengthFilter rendered!');
+
   return (
     <div className={styles.inputContainer}>
       <label htmlFor="post-length" className={styles.label}>
@@ -22,4 +24,4 @@ export function PostLengthFilter({
       />
     </div>
   );
-}
+});
