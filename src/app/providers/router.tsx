@@ -3,11 +3,11 @@ import MainLayout from '../../pages/MainLayout/MainLayout';
 import Posts from '../../pages/Posts';
 import Post from '../../pages/Post';
 import User from '../../pages/User';
-import UserAlbums from '../../pages/UserAlbums';
-import UserPosts from '../../pages/UserPosts';
-import UserTodos from '../../pages/UserTodos';
+import UserAlbums from '../../pages/UserAlbums/UserAlbums';
+import UserPosts from '../../pages/UsersPosts/UserPosts';
+import UserTodos from '../../pages/UserTodos/UserTodos';
 import UserLayout from '../../pages/UserLayout/UserLayout';
-import AlbumPhotos from '../../pages/AlbumPhotos';
+import AlbumPhotos from '../../pages/AlbumPhotos/AlbumPhotos';
 import Users from '../../pages/Users';
 
 const router = createBrowserRouter([
