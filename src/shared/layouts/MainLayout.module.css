@@ -1,0 +1,23 @@
+.mainLayout {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  transition-property: all;
+  transition-duration: var(--transition-default);
+
+  font-family: var(--font-family-base);
+
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.mainContent {
+  flex-grow: 1;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
