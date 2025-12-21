@@ -14,15 +14,11 @@ const PostCard = ({ item: post }: { item: IPost }) => {
   };
 
   if (isLoading) {
-    return <div>Loading comments...</div>;
+    return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>Error fetching comments: </div>;
-  }
-
-  if (!data) {
-    return <div>Comments not found.</div>;
+  if (error || !data) {
+    return <div>Error</div>;
   }
 
   return (

@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useGetAlbumsQuery } from '../entities/album/api/albumsApi';
+import ItemList from '../shared/ui/ItemList/ItemList';
+import AlbumCard from '../entities/album/ui/AlbumCard';
 // import { usePosts } from '../features/PostList/model/hooks/usePosts';
 // import type { IAlbum } from '../entities/interfaces';
 
@@ -20,12 +22,7 @@ function UserAlbums() {
     return <div>Albums not found.</div>;
   }
 
-  return (
-    <div>
-      <h1>UserAlbums Page</h1>
-      <h2>{JSON.stringify(data)}</h2>
-    </div>
-  );
+  return <ItemList items={data} component={AlbumCard} />;
 }
 
 export default UserAlbums;

@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useGetTodosQuery } from '../entities/todo/api/todosApi';
+import ItemList from '../shared/ui/ItemList/ItemList';
+import TodoCard from '../entities/todo/ui/todoCard';
 
 function UserTodos() {
   const { id } = useParams();
@@ -18,12 +20,7 @@ function UserTodos() {
     return <div>Todos not found.</div>;
   }
 
-  return (
-    <div>
-      <h1>UserTodos Page</h1>
-      <h2>{JSON.stringify(data)}</h2>
-    </div>
-  );
+  return <ItemList items={data} component={TodoCard} />;
 }
 
 export default UserTodos;

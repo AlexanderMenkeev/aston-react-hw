@@ -3,7 +3,6 @@ import MainLayout from '../../pages/MainLayout/MainLayout';
 import Posts from '../../pages/Posts';
 import Post from '../../pages/Post';
 import User from '../../pages/User';
-import Album from '../../pages/Album/Album';
 import UserAlbums from '../../pages/UserAlbums';
 import UserPosts from '../../pages/UserPosts';
 import UserTodos from '../../pages/UserTodos';
@@ -31,7 +30,6 @@ const router = createBrowserRouter([
         ],
       },
 
-      { path: 'albums/:id', element: <Album /> },
       { path: 'albums/:id/photos', element: <AlbumPhotos /> },
     ],
   },

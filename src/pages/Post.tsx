@@ -1,27 +1,21 @@
 import { useParams } from 'react-router-dom';
 import { useGetPostQuery } from '../entities/post/api/postsApi';
+import PostCard from '../entities/post/ui/PostCard';
 
 function Post() {
   const { id } = useParams();
 
-  const { data: post, isLoading, isSuccess, isError, error } = useGetPostQuery(id);
-
-  let content: React.ReactNode;
+  const { data: post, isLoading, error } = useGetPostQuery(id);
 
   if (isLoading) {
-    content = <div>Loading...</div>;
-  } else if (isSuccess) {
-    content = <h2>{JSON.stringify(post)}</h2>;
-  } else if (isError) {
-    content = <div>Error! {JSON.stringify(error)}</div>;
+    return <div>Loading...</div>;
   }
 
-  return (
-    <div>
-      <h1>Post Page</h1>
-      {content}
-    </div>
-  );
+  if (error || !post) {
+    return <div>Error</div>;
+  }
+
+  return <PostCard item={post} />;
 }
 
 export default Post;

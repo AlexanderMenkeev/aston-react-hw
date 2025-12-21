@@ -1,29 +1,32 @@
 import { useParams } from 'react-router-dom';
-import { useGetPostsQuery } from '../entities/post/api/postsApi';
+import { postsSelectors, useGetPostsQuery } from '../entities/post/api/postsApi';
+import { useSelector } from 'react-redux';
+import PostCard from '../entities/post/ui/PostCard';
+import ItemList from '../shared/ui/ItemList/ItemList';
+import type IPost from '../entities/post/model/IPost';
 
 function UserPosts() {
   const { id } = useParams();
 
-  const { data, isLoading, error } = useGetPostsQuery({ userId: id });
+  const { isLoading, error } = useGetPostsQuery();
+
+  const allPosts = useSelector(postsSelectors.selectAll);
 
   if (isLoading) {
-    return <div>Loading posts...</div>;
+    return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>Error fetching posts</div>;
+  if (error || !id) {
+    return <div>Error</div>;
   }
 
-  if (!data) {
-    return <div>Posts not found.</div>;
+  function filterPostsByUserId(posts: IPost[], id: number) {
+    return posts.filter((post) => {
+      return post.userId == id;
+    });
   }
 
-  return (
-    <div>
-      <h1>UserPosts Page</h1>
-      <h2>{JSON.stringify(data)}</h2>
-    </div>
-  );
+  return <ItemList items={filterPostsByUserId(allPosts, Number(id))} component={PostCard} />;
 }
 
 export default UserPosts;
