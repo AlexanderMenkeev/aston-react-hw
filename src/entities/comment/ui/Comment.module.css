@@ -1,0 +1,13 @@
+.commentItem {
+  padding: 8px;
+  border-bottom: 2px solid #eee;
+}
+
+.commentHeader {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.commentEmail {
+  font-size: 0.9rem;
+}
