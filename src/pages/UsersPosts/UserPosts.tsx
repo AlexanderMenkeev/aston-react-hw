@@ -32,7 +32,7 @@ function UserPosts() {
       <div className={styles.headingContainer}>
         <h2 className={styles.heading}>Посты ({filteredPosts.length})</h2>
       </div>
-      <ItemList items={filteredPosts} component={PostCard} />;
+      <ItemList items={filteredPosts} component={PostCard} />
     </section>
   );
 }
