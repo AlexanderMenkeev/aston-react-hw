@@ -22,7 +22,7 @@ function UserTodos() {
       <div className={styles.headingContainer}>
         <h2 className={styles.heading}>Задачи ({data.length})</h2>
       </div>
-      <ItemList items={data} component={TodoCard} />;
+      <ItemList items={data} component={TodoCard} />
     </section>
   );
 }
