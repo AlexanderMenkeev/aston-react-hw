@@ -1,0 +1,8 @@
+.photoCard {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.photoCard:hover {
+  transform: scale(1.05);
+}

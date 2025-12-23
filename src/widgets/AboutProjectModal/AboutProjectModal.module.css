@@ -1,0 +1,9 @@
+.description {
+  margin-bottom: 0.5rem;
+}
+
+.techList {
+  list-style-type: disc;
+  list-style-position: inside;
+  text-align: left;
+}

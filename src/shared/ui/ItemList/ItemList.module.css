@@ -1,0 +1,16 @@
+.itemList {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.itemGrid {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: grid;
+  gap: 1rem;
+
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  padding: 1rem 0;
+}
