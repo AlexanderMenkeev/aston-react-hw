@@ -1,0 +1,20 @@
+/* TO DO: темная и светлая темы для numberInput */
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.label {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.numberInput {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1;
+  max-width: 250px;
+}

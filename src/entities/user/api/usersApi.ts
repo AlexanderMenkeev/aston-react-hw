@@ -1,0 +1,34 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_URL } from '../../../shared/config';
+import type IUser from '../model/IUser';
+import { createEntityAdapter, createSelector } from '@reduxjs/toolkit';
+import type { RootState } from '../../../app/providers/store';
+
+const usersAdapter = createEntityAdapter<IUser>();
+type UsersState = ReturnType<typeof usersAdapter.getInitialState>;
+
+const initialState = usersAdapter.getInitialState();
+
+export const usersApi = createApi({
+  reducerPath: 'usersApi',
+  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+  endpoints: (builder) => ({
+    getUsers: builder.query<UsersState, void>({
+      query: () => '/users',
+      transformResponse: (response: IUser[]) => {
+        return usersAdapter.setAll(initialState, response);
+      },
+    }),
+    getUser: builder.query<IUser, number>({
+      query: (id) => `/users/${id}`,
+    }),
+  }),
+});
+
+export const { useGetUserQuery, useGetUsersQuery } = usersApi;
+
+const selectUsersResult = usersApi.endpoints.getUsers.select();
+
+const selectUsersData = createSelector(selectUsersResult, (result) => result.data);
+
+export const usersSelectors = usersAdapter.getSelectors((state: RootState) => selectUsersData(state) ?? initialState);
