@@ -25,7 +25,7 @@ const PostCard = ({ item: post }: { item: IPost }) => {
     return <div>Error</div>;
   }
 
-  const handleDeletePost = async (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleDeletePost: React.MouseEventHandler<HTMLButtonElement> = async (event) => {
     event.stopPropagation();
     await deletePost(post.id);
   };

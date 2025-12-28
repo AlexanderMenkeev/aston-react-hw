@@ -3,10 +3,10 @@ import { useAppDispatch } from '../../app/providers/hooks';
 import ThemeSwitcher from '../../features/ThemeSwitcher/ui/ThemeSwitcher';
 import { toggleModal } from '../../shared/lib/modal/modalSlice';
 import Button from '../../shared/ui/Button/Button';
-import Tabs, { type Tab } from '../../shared/ui/Tabs/Tabs';
+import Tabs, { type ITab } from '../../shared/ui/Tabs/Tabs';
 import styles from './Header.module.css';
 
-const headerTabs: Tab[] = [
+const headerTabs: ITab[] = [
   {
     to: '/',
     label: 'Все посты',

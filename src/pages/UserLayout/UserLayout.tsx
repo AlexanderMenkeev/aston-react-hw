@@ -1,12 +1,12 @@
 import { Outlet, useParams } from 'react-router-dom';
-import type { Tab } from '../../shared/ui/Tabs/Tabs';
+import type { ITab } from '../../shared/ui/Tabs/Tabs';
 import Tabs from '../../shared/ui/Tabs/Tabs';
 import styles from './UserLayout.module.css';
 
 function UserLayout() {
   const { id } = useParams();
 
-  const tabs: Tab[] = [
+  const tabs: ITab[] = [
     {
       to: `/users/${id}`,
       label: 'Пользователь',

@@ -1,13 +1,13 @@
 import styles from './Tabs.module.css';
 import { NavLink } from 'react-router-dom';
 
-export interface Tab {
+export interface ITab {
   to: string;
   label: string;
   end?: boolean;
 }
 
-function Tabs(props: { tabs: Tab[] }) {
+function Tabs(props: { tabs: ITab[] }) {
   const { tabs } = props;
 
   return (
